@@ -1,0 +1,271 @@
+\ProvidesPackage{beamerinnerthemepicsec}[2015/01/03]
+
+% Beamer theme by Eduardo García-Portugués <edu[tod]gar[tod]por[ta]gmail[tod]com>
+% December 2014, version 0.1
+% 
+% Based on the progressbar Beamer package from Sylvain Bouveret <sylvain[dot]bouveret[aT]cert[DoT]fr>, September 2010, version 0.42.
+% Based on the LaTeX-Beamer package: Copyright 2003 by Till Tantau <tantau@users.sourceforge.net>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\RequirePackage{tikz}
+\usetikzlibrary{fadings}
+\RequirePackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Processing options...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\def\picsec@headline{none}%
+\def\picsec@frametitle{picture-section}%
+\def\picsec@imagename{images/tree04}%
+\def\picsec@titleimagename{images/tree04}%
+\def\picsec@titlepage{picture}%
+\define@key{picsec}{headline}[none]{%
+  \def\picsec@headline{#1}%
+}
+\define@key{picsec}{frametitle}[picture]{%
+  \def\picsec@frametitle{#1}%
+}
+\define@key{picsec}{imagename}{%
+  \def\picsec@imagename{#1}%
+  \pgfdeclareimage[width=0.12\textwidth,interpolate=true]{headlineimage}{\picsec@imagename}
+}
+\define@key{picsec}{titleimagename}{%
+  \def\picsec@titleimagename{#1}%
+  \pgfdeclareimage[width=0.12\textwidth,interpolate=true]{titleheadlineimage}{\picsec@titleimagename}
+}
+\define@key{picsec}{titlepage}[picture]{%
+  \def\picsec@titlepage{#1}%
+}
+
+\def\picsecoptions#1{\setkeys{picsec}{#1}}
+
+\def\insertintermediateframenumber{\inserttotalframenumber}
+
+
+% This piece of code is just to make the code Babel-compliant with every
+% language.
+% It comes from:
+% http://forum.mathematex.net/latex-f6/beamer-et-shorthandoff-t3851.html
+\makeatletter
+\newboolean{@twopt} \setboolean{@twopt}{false}
+\newcommand*{\twoptoff}{\ifnum \catcode`\;=13 \catcode`\;=12 \setboolean{@twopt}{true} \fi}
+\newcommand*{\twopton}{\if@twopt \catcode`\;=13 \setboolean{@twopt}{false}  \fi}
+
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Bibliography...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Style
+\defbeamertemplate*{bibliography item}{picsec theme}{
+  \begin{tikzpicture}[rounded corners=1pt]
+    \useasboundingbox (-0.1, 0.3) rectangle (0.4, 0.5);
+    \fill[fill=structure.fg!25!structure.bg] (0, 0.25) rectangle (0.4, 0.5);
+    \shade[bottom color=structure.bg,top color=structure.fg!25!structure.bg] (0, 0) -- (0.3, 0) -- (0.4, 0.12) -- (0.4, 0.3) -- (0, 0.3) -- cycle;
+    \shade[left color=structure.bg,right color=structure.fg!30!structure.bg] (0,0.27) .. controls (0.25,0.25) .. (0.4,0.5) -- (0,0.5) -- cycle;
+    \fill[fill=structure.bg!80!structure.fg] (0,0) rectangle (0.3,0.05);
+    \shade[left color=structure.bg!95!structure.fg,right color=structure.bg!80!structure.fg] (0,0) rectangle (0.05,0.5);
+    \shade[left color=structure.bg,right color=structure.bg!50!structure.fg,shading angle=45] (0.3,0) -- (0.3,0.12) -- (0.4,0.12) -- cycle;
+    \draw[draw=structure.fg!35!structure.bg] (0,0) -- (0.3,0) -- (0.4,0.12) -- (0.4,0.5) -- (0,0.5) -- cycle;
+    \draw[draw=structure.fg!35!structure.bg](0.3,0) -- (0.3,0.12) -- (0.4,0.12);
+  \end{tikzpicture}
+}
+
+\def\bibitem{\@ifnextchar<{\beamer@bibitem@store}{\gdef\beamer@bibstore{}\beamer@plainbibitem}}
+\def\beamer@bibitem@store<#1>{\gdef\beamer@bibstore{<#1>}\beamer@plainbibitem}
+\def\beamer@plainbibitem{\@ifnextchar[\@lbibitem\beamer@bibitem}
+\def\@lbibitem[#1]#2{\expandafter\item\beamer@bibstore[\@biblabel{#1}\hfill]%
+  \@ifundefined{beamerbib@#2@\the\c@framenumber}{\if@filesw%
+    {\let\protect\noexpand%
+      \immediate\write\@auxout%
+      {\string\bibcite{#2}{\noexpand\hyperlink{beamerbib#2}{#1}}}}\fi%
+    \global\@namedef{beamerbib@#2@\the\c@framenumber}{\relax}%
+    \hypertarget{beamerbib#2}{}%
+    }{}%
+  \def\newblock{\beamer@newblock}\newblock\hskip-0.8ex}% This is really dirty !
+%  \hbox{}\ignorespaces}
+\def\beamer@bibitem#1{\@bibitem{#1}\ignorespaces}
+\def\@bibitem#1{\expandafter\item\beamer@bibstore\@ifundefined{beamerbib@#1@\the\c@framenumber}%
+  {\if@filesw \immediate\write\@auxout
+    {\string\bibcite{#1}{\noexpand\hyperlink{beamerbib#1}{\the\value{\@listctr}}}}\fi%
+    \global\@namedef{beamerbib@#1@\the\c@framenumber}{\relax}%
+    \hypertarget{beamerbib#1}{}}%
+  {}%
+  \def\newblock{\beamer@newblock}\newblock}
+
+% Compact references
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Blocks...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newbox\picsec@blockbox
+\newdimen\picsec@boxheight
+\newdimen\picsec@boxwidth
+
+% The ultimate trick to prevent the itemize-inside-blocks bug from happening...
+\let\picsec@tempitemize=\itemize
+\def\picsec@itemize{\ifhmode\else\vskip-0.85\topsep\fi\picsec@tempitemize}
+% 
+
+%%% Bruno's factorized version begins %%%
+
+\newcommand{\defblock}[1][]{
+  \defbeamertemplate*{block \ifx#1\@empty\else#1\space\fi begin}{picsec theme}
+  {
+    \setbox\picsec@blockbox=\hbox to 0.95\textwidth\bgroup\vbox\bgroup\vskip-0.25\baselineskip\raggedright\begin{minipage}{0.95\textwidth} \ifx\insertblocktitle\@empty\else{\usebeamerfont{block title}\usebeamercolor[fg]{block title\ifx#1\@empty\else\space#1\fi}\insertblocktitle}\\[-0.3cm]% Just to be "babel-safe"
+      \twoptoff{}\tikz\draw[fg!20!bg] (0, 0) -- (\textwidth, 0);\twopton{}\fi\usebeamerfont{block body\ifx#1\@empty\else\space#1\fi}\ifx\insertblocktitle\@empty\else\global\let\itemize=\picsec@itemize\fi \par
+  }
+  \defbeamertemplate*{block \ifx#1\@empty\else#1\space\fi end}{picsec theme}
+  {
+    \vphantom{y}
+    \global\let\itemize=\picsec@tempitemize\end{minipage}\vskip-0.25\baselineskip\egroup\egroup
+    \picsec@boxwidth=\wd\picsec@blockbox
+    \advance\picsec@boxwidth by 0.5\baselineskip
+    \picsec@boxheight=\ht\picsec@blockbox
+    \advance\picsec@boxheight by \dp\picsec@blockbox
+    {\parbox[t]{0cm}{
+      \usebeamercolor{block body\ifx#1\@empty\else\space#1\fi}
+      \tikz[baseline=(current bounding box.north)]{\draw[draw=fg!20!bg,fill=bg, rounded corners=2pt] (0, 0) rectangle (\picsec@boxwidth, \picsec@boxheight);} 
+    }}
+  {\parbox[t]{0cm}{
+      \vskip0.5\baselineskip
+      \ \hfill{\box\picsec@blockbox}\hfill\ 
+    }}\par
+    \vskip-1\baselineskip
+  }
+}
+
+\defblock
+\defblock[example]
+\defblock[alerted]
+
+%%% Bruno's factorized version ends %%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Frame title...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\picsec@separator{--}
+
+\ifx\picsec@imagename\@relax
+\else
+\pgfdeclareimage[width=0.12\textwidth,interpolate=true]{headlineimage}{\picsec@imagename}
+\fi
+\ifx\picsec@frametitle\@relax
+\def\picsec@frametitle{normal}
+\fi
+
+\defbeamertemplate*{frametitle}{picsec theme}{
+\edef\tempa{normal}
+\ifx\picsec@frametitle\tempa
+\begin{centering}
+  \textbf{\insertframetitle}
+  \par
+\end{centering}
+\else
+\edef\tempa{picture-subsection}
+\ifx\picsec@frametitle\tempa
+\parbox[c]{0.13\textwidth}{\pgfuseimage{headlineimage}}
+\parbox[c]{0.85\textwidth}{
+  \usebeamercolor{frametitle}{\scriptsize \ifx\insertsection\@empty\ \else\insertsection\fi\ifx\insertsubsection\@empty\else\ \picsec@separator\ \insertsubsection\fi}\\[-0.3cm]\rule{0.7\textwidth}{0.5pt}\par%\vskip-1cm\rule{0.7\textwidth}{0.5pt}\par
+  \textbf{\vphantom{Hp}\insertframetitle}
+}
+\else
+\edef\tempa{picture-edu}
+\ifx\picsec@frametitle\tempa
+\vspace{-0.4cm} % Remove unuseful vertical space over the frametitle
+\hspace{-0.5cm}
+\parbox[c]{0.13\textwidth}{\pgfuseimage{headlineimage}}
+\parbox[c]{0.85\textwidth}{
+  %\usebeamercolor{frametitle}{\scriptsize \ifx\insertsection\@empty\ \else\insertsection\fi\ifx\insertsubsection\@empty\else\ \picsec@separator\ \insertsubsection\fi}\\[-0.3cm]\rule{0.7\textwidth}{0.5pt}\par%\vskip-1cm\rule{0.7\textwidth}{0.5pt}\par
+  \textbf{\vphantom{Hp}\insertframetitle}\\[-0.45cm]\rule{0.875\textwidth}{0.5pt}
+}
+\else
+\parbox[c]{0.13\textwidth}{\pgfuseimage{headlineimage}}
+\parbox[c]{0.85\textwidth}{
+  \usebeamercolor{frametitle}{\scriptsize \ifx\insertsection\@empty\ \else\insertsection\fi}\\[-0.3cm]\rule{0.7\textwidth}{0.5pt}\par%\vskip-1cm\rule{0.7\textwidth}{0.5pt}\par
+  \textbf{\vphantom{Hp}\insertframetitle}
+}
+\fi
+\fi
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Items...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{itemize item}{
+  \begin{tikzpicture}\shade[ball color=fg!80!bg] (0, 0) circle (0.07);\draw[draw=fg!50!black!90!bg] (0, 0) circle (0.07);\end{tikzpicture}%
+}
+\setbeamertemplate{itemize subitem}{\begin{tikzpicture}\shade[ball color=fg!80!white] (0, 0) circle (0.05);\draw[draw=fg!50!black!90!bg] (0, 0) circle (0.05);\end{tikzpicture}}
+\setbeamertemplate{itemize subsubitem}{\begin{tikzpicture}\shade[ball color=fg!80!white] (0, 0) circle (0.05);\draw[draw=fg!50!black!90!bg] (0, 0) circle (0.05);\end{tikzpicture}}
+
+% \setbeamertemplate{enumerate item}{\raisebox{-0.4ex}{\begin{tikzpicture}\shade[ball color=structure.fg!80!white] (0, 0) circle (0.07);\draw  (0, 0) node [draw=structure.fg!50!black!90!bg, inner sep=1pt] {\tiny\color{white}\bf\insertenumlabel};\end{tikzpicture}}}
+% \setbeamertemplate{enumerate subitem}{\raisebox{-0.4ex}{\begin{tikzpicture}\shade[ball color=structure.fg!80!white] (0, 0) circle (0.07);\draw  (0, 0) node [draw=structure.fg!50!black!90!bg, inner sep=1pt] {\tiny\color{white}\bf\insertenumlabel};\end{tikzpicture}}}
+\setbeamertemplate{enumerate item}{\raisebox{-0.4ex}{\begin{tikzpicture}\node [draw=fg!50!black!90!bg, inner sep=1pt, shading=ball, circle, ball color=fg!80!white] {\tiny\color{bg}\bf\insertenumlabel};\end{tikzpicture}}}
+\setbeamertemplate{enumerate subitem}{\raisebox{-0.4ex}{\begin{tikzpicture}\node [draw=fg!50!black!90!bg, inner sep=1pt, shading=ball,circle, ball color=fg!80!white] {\tiny\color{bg}\bf\insertenumlabel};\end{tikzpicture}}}
+
+\normalsize
+\pgfdeclareradialshading[bg,parent.bg]{tocsphere}{\pgfpoint{-0.5ex}{0.6ex}}%
+{%
+  color(0cm)=(structure.fg!35!white);
+  color(0.44ex)=(structure.fg!75!white);
+  color(0.88ex)=(structure.fg!70!black!90!bg);
+  color(1.2ex)=(structure.fg!50!black!90!bg);
+  color(1.3ex)=(structure.fg!50!black!90!bg)}
+
+\pgfdeclareradialshading[structure.fg,bg]{bigsphere}{\pgfpoint{-0.1849315ex}{.2260273ex}}%
+{%
+  color(0cm)=(structure.fg!15);
+  color(0.1643835ex)=(structure.fg!75);
+  color(0.3287671ex)=(structure.fg!70!black);
+  color(0.4520547ex)=(structure.fg!50!black);
+  color(0.53ex)=(structure.fg!50!black)}
+
+\pgfdeclareradialshading[structure.fg,bg]{smallsphere}{\pgfpoint{-0.1479452ex}{0.18287671ex}}%
+{%
+  color(0cm)=(structure.fg!15); 
+  color(0.1315068ex)=(structure.fg!75);
+  color(0.2630136ex)=(structure.fg!70!black);
+  color(0.36164383ex)=(structure.fg!50!black);
+  color(0.427ex)=(bg)}
+
+
+\setbeamertemplate{section in toc}
+{\leavevmode%
+  \raisebox{-0.5ex}{\begin{tikzpicture}\node [draw=fg!50!black!90!bg, inner sep=1.5pt, shading=ball, circle, ball color=fg!80!white] {\scriptsize\color{bg}\bf\inserttocsectionnumber};\end{tikzpicture}}
+  \inserttocsection\par
+}
+
+\mode<handout>
+\setbeamertemplate{frametitle}{
+  \setbeamercolor{frametitle}{fg=structure.fg,bg=white}
+  \usebeamercolor{frametitle}
+  {\color{fg}\bf \insertframetitle}
+}
+
+\mode
+<all>

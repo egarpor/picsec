@@ -1,0 +1,80 @@
+\ProvidesPackage{beamerthemepicsec}[2015/01/03]
+
+% Beamer theme by Eduardo García-Portugués <edu[tod]gar[tod]por[ta]gmail[tod]com>
+% December 2014, version 0.1
+% 
+% Based on the progressbar Beamer package from Sylvain Bouveret <sylvain[dot]bouveret[aT]cert[DoT]fr>, September 2010, version 0.42.
+% Based on the LaTeX-Beamer package: Copyright 2003 by Till Tantau <tantau@users.sourceforge.net>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\RequirePackage{tikz}
+\RequirePackage{bibunits}
+\RequirePackage{calc}
+
+\usecolortheme{picsec}
+\useinnertheme{picsec}
+\usefonttheme{picsec}
+\useoutertheme{picsec}
+
+\setbeamertemplate{navigation symbols}{}
+
+\AtBeginDocument{%
+  \typeout{..................................................................}
+  \typeout{You are using the progressbar beamer theme (Sylvain B.) and modified by Eduardo García-Portugués}
+  \typeout{Version: 0.42 September 2010. Modified: January 2015.}
+  \typeout{..................................................................}
+}
+
+\def\insertintermediateframenumber{\inserttotalframenumber}
+
+\renewcommand{\appendix}[1][0void0]
+{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  % This piece of code is supposed to introduce a bias in the
+  % number of slides
+  \makeatletter
+  \immediate\write\@auxout{\string\@writefile{nav}%
+    {\noexpand\headcommand{\noexpand\def\noexpand\insertintermediateframenumber{\the\c@framenumber}}}}
+  \renewcommand{\insertintermediateframenumber}{\inserttotalframenumber}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  
+  \def\tmparg{#1}
+  \def\tmpargref{0void0}
+  \ifx\tmparg\tmpargref\else
+  \begin{frame}[plain]
+    \vfill
+    \begin{center}
+      \usebeamerfont{title}\usebeamercolor{title}{\color{fg}\ #1\ }
+    \end{center}
+    \vfill
+  \end{frame}
+  \fi
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  % We recompute the progressbar step and the current position
+
+  \picsec@numer=1
+  \picsec@denom=\insertintermediateframenumber
+  \advance\picsec@denom by -1
+  \picsec@tmpresult=\picsec@barlength
+  \multiply\picsec@tmpresult by \picsec@numer
+  \ifnum\picsec@denom=0\else\divide\picsec@tmpresult by \picsec@denom\fi
+  \global\picsec@stepbar=\picsec@tmpresult
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+  \makeatother
+}
+
+
+% Triangles for itemizes
+\setbeamertemplate{itemize items}[triangle]
+
+
+% Title
+\newcommand{\picturetitle}[3]{%
+	\newlength{\emptylength}%
+	\setlength{\emptylength}{\textwidth-\widthof{\tiny#2}-\widthof{\tiny#3}+0.9cm}%
+	\title[#3\hspace*{\emptylength}#2]{#1}}

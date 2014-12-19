@@ -1,0 +1,78 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[xcolor={svgnames}]{beamer}
+
+%------------------------------------------------------------------------%
+%-------------------------- picsec theme  --------------------------%
+%------------------------------------------------------------------------%
+
+% Theme
+\usetheme{picsec}
+
+% DarkBlue color
+\definecolor{picsec@fgblue}{rgb}{0,0,0.545}
+\usecolortheme[named=DarkBlue]{structure}
+
+% To know which RGB code has a color name place this in a frame (and divide the resulting output by 255!):
+%\convertcolorspec{named}{DarkBlue}{RGB}\RGBcolour\RGBcolour
+
+% Options
+\picsecoptions{headline=none,frametitle=picture-edu,titlepage=picture,imagename=images/section_figure_1,titleimagename=images/title_figure}
+
+
+%------------------------------------------------------------------------%
+%------------------------------ Cover slide -----------------------------%
+%------------------------------------------------------------------------%
+
+% Create title \picturetitle{long title}{short title}{author}
+\picturetitle{Introducing the \texttt{picsec} beamer's theme}{\texttt{picsec} theme}{Eduardo Garc\'ia-Portugu\'es}
+
+% Authors
+\author{Eduardo Garc\'ia-Portugu\'es \normalfont(eduardo.garcia@usc.es),\\
+based on the code of Sylvain Bouveret.\\[0.25cm]
+University of Santiago de Compostela\\
+\mbox{}}
+
+% Date
+\date{Santiago de Compostela, January, 2015}
+
+% Logo (if wanted, otherwise comment)
+\logo{\includegraphics[scale=0.045]{logo_ux.jpg}}
+
+\begin{document}
+
+% Titlepage
+\begin{frame}
+\setbeamertemplate{logo}{}
+\titlepage
+\end{frame}
+
+\begin{frame}{Welcome!}
+
+\begin{itemize}
+\item This is the \texttt{picturetheme} theme!
+\item It was created by Eduardo Garc\'ia-Portugu\'es modifying the \texttt{progressbar} package of \hyperlink{http://recherche.noiraudes.net/en/LaTeX.php}{Sylvain Bouveret}.
+\item Feel free to use improve
+\item If you find it useful, you may want to cite it as :
+\begin{thebibliography}{2}
+\setbeamertemplate{bibliography item}[online]
+\bibitem{}
+Garc\'ia-Portugu\'es, E. (2015).
+\newblock \texttt{picsec} beamer theme. 
+\newblock \url{https://github.com/edugp/picsec}
+\end{thebibliography}
+\end{itemize}
+
+\end{frame}
+
+% You can change the picture of each section slide (for example at the beginning of a new section)
+\picsecoptions{headline=none,frametitle=picture-edu,titlepage=picture,imagename=images/section_figure_2,titleimagename=images/title_figure}
+
+\begin{frame}{Disclaimer}
+Use it at your own risk.
+
+
+\end{frame}
+
+
+
+\end{document}
