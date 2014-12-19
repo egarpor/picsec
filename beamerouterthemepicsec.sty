@@ -1,6 +1,7 @@
+% !TEX encoding = UTF-8 Unicode
 \ProvidesPackage{beamerouterthemepicsec}[2015/01/03]
 
-% Beamer theme by Eduardo García-Portugués <edu[tod]gar[tod]por[ta]gmail[tod]com>
+% Beamer theme by Eduardo García-Portugués <edu[toD]gar[toD]por[tA]gmail[toD]com>
 % December 2014, version 0.1
 % 
 % Based on the progressbar Beamer package from Sylvain Bouveret <sylvain[dot]bouveret[aT]cert[DoT]fr>, September 2010, version 0.42.
@@ -14,11 +15,13 @@
 
 \makeatletter
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Processing options...
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \def\picsec@headline{none}%
 \def\picsec@frametitle{picture-section}%
@@ -48,12 +51,12 @@
 \def\insertintermediateframenumber{\inserttotalframenumber}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Some color definitions...
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \setbeamercolor{picsec primary}{parent=palette primary}
 \setbeamercolor{picsec secondary}{parent=palette secondary}
@@ -66,6 +69,7 @@
 % Some computations dedicated to the progressbar...
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \newdimen\picsec@currentbarlength
 \newdimen\picsec@framenumberrectangle
@@ -141,6 +145,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \mode<presentation>
 
 \newlength\picsec@sectionboxwidth
@@ -184,6 +189,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \setbeamertemplate{headline}
 {%
 \edef\tempa{sections}
@@ -206,12 +212,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \defbeamertemplate*{footline}{picsec theme}{
   \begin{beamercolorbox}[wd=\paperwidth,ht=0.6cm,dp=0ex]{structure.fg}%
     \insertprogressbar
   \end{beamercolorbox}%
 }
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -282,8 +288,8 @@
   {
     \usebeamercolor{section in head/foot}
     \usebeamercolor{normal text}
-    %\pgfdeclareverticalshading{background shading}{\the\paperwidth}{color(0cm)=(section in head/foot.bg); color(3cm)=(bg); color(0.6\paperheight)=(bg); color(0.9\paperheight)=(section in head/foot.bg); color(\paperheight)=(black!60!section in head/foot.bg)
-    %}
+   \pgfdeclareverticalshading{background shading}{\the\paperwidth}{color(0cm)=(section in head/foot.bg); color(3cm)=(bg); color(0.6\paperheight)=(bg); color(0.9\paperheight)=(section in head/foot.bg); color(\paperheight)=(black!60!section in head/foot.bg)
+   }
   }
 }
 

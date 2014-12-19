@@ -1,6 +1,7 @@
+% !TEX encoding = UTF-8 Unicode
 \ProvidesPackage{beamerinnerthemepicsec}[2015/01/03]
 
-% Beamer theme by Eduardo García-Portugués <edu[tod]gar[tod]por[ta]gmail[tod]com>
+% Beamer theme by Eduardo García-Portugués <edu[toD]gar[toD]por[tA]gmail[toD]com>
 % December 2014, version 0.1
 % 
 % Based on the progressbar Beamer package from Sylvain Bouveret <sylvain[dot]bouveret[aT]cert[DoT]fr>, September 2010, version 0.42.
@@ -199,6 +200,7 @@
   %\usebeamercolor{frametitle}{\scriptsize \ifx\insertsection\@empty\ \else\insertsection\fi\ifx\insertsubsection\@empty\else\ \picsec@separator\ \insertsubsection\fi}\\[-0.3cm]\rule{0.7\textwidth}{0.5pt}\par%\vskip-1cm\rule{0.7\textwidth}{0.5pt}\par
   \textbf{\vphantom{Hp}\insertframetitle}\\[-0.45cm]\rule{0.875\textwidth}{0.5pt}
 }
+\vspace{-0.4cm} % Remove unuseful vertical space below the frametitle
 \else
 \parbox[c]{0.13\textwidth}{\pgfuseimage{headlineimage}}
 \parbox[c]{0.85\textwidth}{

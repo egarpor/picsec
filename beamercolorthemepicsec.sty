@@ -1,6 +1,7 @@
+% !TEX encoding = UTF-8 Unicode
 \ProvidesPackage{beamercolorthemepicsec}[2007/06/21]
 
-% Beamer theme by Sylvain Bouveret <sylvain[dot]bouveret[aT]cert[DoT]fr>
+% Beamer theme by Eduardo García-Portugués <edu[toD]gar[toD]por[tA]gmail[toD]com>
 % sep. 2010 version 0.42
 %
 % based on the LaTeX-Beamer package :
@@ -17,28 +18,26 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\definecolor{picsec@bgyellow}{rgb}{0.95,0.95,0.85}
-\definecolor{picsec@bggray}{rgb}{0.9,0.9,0.9}
+\RequirePackage{xcolor}
 
-%\definecolor{picsec@fgblue}{rgb}{0.2, 0.3, 0.5}
-\definecolor{picsec@bgblue}{rgb}{0.92, 0.93, 0.95}
-
-\definecolor{picsec@darkbgblue}{rgb}{0.01,0.05,0.15}
-\definecolor{picsec@darkfgblue}{rgb}{0.25,0.45,0.5}
+% Default color definitions, change them in the template
+\definecolor{picsec@fgmain}{rgb}{0.2,0.3,0.5} % Most important choice.
+\definecolor{picsec@bgmain}{named}{white} % Background color of slides
+\definecolor{picsec@bggray}{rgb}{0.9,0.9,0.9} % For blocks, etc.
 
 \mode<presentation>
 
-\setbeamercolor{palette primary}{fg=picsec@fgblue,bg=white}
-\setbeamercolor{palette secundary}{fg=white!90!picsec@fgblue,bg=picsec@fgblue}
-\setbeamercolor{palette tertiary}{fg=picsec@fgblue,bg=picsec@bgblue}
-\setbeamercolor{palette quaternary}{fg=picsec@fgblue,bg=picsec@bgblue}
+\setbeamercolor{palette primary}{fg=picsec@fgmain,bg=white}
+\setbeamercolor{palette secundary}{fg=white!90!picsec@fgmain,bg=picsec@bgmain}
+\setbeamercolor{palette tertiary}{fg=picsec@fgmain,bg=picsec@bgmain}
+\setbeamercolor{palette quaternary}{fg=picsec@fgmain,bg=picsec@bgmain}
 
-\setbeamercolor{structure}{fg=picsec@fgblue,bg=white}
+\setbeamercolor{structure}{fg=picsec@fgmain,bg=white}
 
-\setbeamercolor{background canvas}{parent=palette primary}
+\setbeamercolor{background canvas}{parent=palette secundary}
 
 \setbeamercolor{section in head/foot}{parent=palette primary}
-\setbeamercolor{frametitle}{bg=white,fg=picsec@fgblue}
+\setbeamercolor{frametitle}{bg=white,fg=picsec@fgmain}
 
 \setbeamercolor{alerted text}{fg=black!30!red,bg=bg}
 \setbeamercolor{example text}{fg=black!30!green,bg=bg}
@@ -51,7 +50,7 @@
 \setbeamercolor{block body alerted}{fg=normal text.fg,bg=alerted text.fg!10!bg}
 \setbeamercolor{block body example}{fg=normal text.fg,bg=example text.fg!10!bg}
 
-\setbeamercolor{title}{fg=picsec@fgblue,bg=white}
+\setbeamercolor{title}{fg=picsec@fgmain,bg=white}
 \setbeamercolor{subtitle}{parent=title}
 
 \mode

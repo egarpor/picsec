@@ -1,5 +1,5 @@
 % !TEX encoding = UTF-8 Unicode
-\documentclass[xcolor={svgnames}]{beamer}
+\documentclass[xcolor={svgnames,dvipsnames}]{beamer}
 
 %------------------------------------------------------------------------%
 %-------------------------- picsec theme  --------------------------%
@@ -8,12 +8,11 @@
 % Theme
 \usetheme{picsec}
 
-% DarkBlue color
-\definecolor{picsec@fgblue}{rgb}{0,0,0.545}
-\usecolortheme[named=DarkBlue]{structure}
-
-% To know which RGB code has a color name place this in a frame (and divide the resulting output by 255!):
-%\convertcolorspec{named}{DarkBlue}{RGB}\RGBcolour\RGBcolour
+% Colors
+%\definecolor{picsec@fgmain}{named}{DarkBlue}
+\definecolor{picsec@fgmain}{rgb}{0.2, 0.3, 0.5}
+\definecolor{picsec@bgmain}{rgb}{0.92, 0.93, 0.95}
+%\definecolor{picsec@bgmain}{named}{DarkGreen}
 
 % Options
 \picsecoptions{headline=none,frametitle=picture-edu,titlepage=picture,imagename=images/section_figure_1,titleimagename=images/title_figure}
@@ -48,11 +47,16 @@ University of Santiago de Compostela\\
 
 \begin{frame}{Welcome!}
 
+\begin{block}{\texttt{picsec}}
+This is the \texttt{picsec} theme!
+\end{block}
+
+Some useful information:
 \begin{itemize}
-\item This is the \texttt{picturetheme} theme!
-\item It was created by Eduardo Garc\'ia-Portugu\'es modifying the \texttt{progressbar} package of \hyperlink{http://recherche.noiraudes.net/en/LaTeX.php}{Sylvain Bouveret}.
-\item Feel free to use improve
-\item If you find it useful, you may want to cite it as :
+\item It was created by Eduardo Garc\'ia-Portugu\'es modifying the \texttt{progressbar} package of Sylvain Bouveret: \textcolor{blue}{\url{http://recherche.noiraudes.net/en/LaTeX.php}}.
+\item Feel free to use improve it!
+\item Feedback and bug reports are greatly appreciated.
+\item If you find it useful, you may want to cite it and share with your colleagues as:
 \begin{thebibliography}{2}
 \setbeamertemplate{bibliography item}[online]
 \bibitem{}
@@ -60,6 +64,7 @@ Garc\'ia-Portugu\'es, E. (2015).
 \newblock \texttt{picsec} beamer theme. 
 \newblock \url{https://github.com/edugp/picsec}
 \end{thebibliography}
+
 \end{itemize}
 
 \end{frame}
@@ -68,7 +73,17 @@ Garc\'ia-Portugu\'es, E. (2015).
 \picsecoptions{headline=none,frametitle=picture-edu,titlepage=picture,imagename=images/section_figure_2,titleimagename=images/title_figure}
 
 \begin{frame}{Disclaimer}
+
+
+
+\begin{alertblock}{Alert}
 Use it at your own risk.
+\end{alertblock}
+
+
+\begin{exampleblock}{Alert}
+	Use it at your own risk.
+\end{exampleblock}
 
 
 \end{frame}
