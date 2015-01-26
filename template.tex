@@ -2,17 +2,16 @@
 \documentclass[xcolor={svgnames,dvipsnames}]{beamer}
 
 %------------------------------------------------------------------------%
-%-------------------------- picsec theme  --------------------------%
+%--------------------------    picsec theme    --------------------------%
 %------------------------------------------------------------------------%
 
 % Theme
 \usetheme{picsec}
 
-% Colors
-%\definecolor{picsec@fgmain}{named}{DarkBlue}
-\definecolor{picsec@fgmain}{rgb}{0.2, 0.3, 0.5}
-\definecolor{picsec@bgmain}{rgb}{0.92, 0.93, 0.95}
-%\definecolor{picsec@bgmain}{named}{DarkGreen}
+% Theme color
+\definecolor{picsec@fgmain}{rgb}{0.20,0.30,0.50}
+%\definecolor{picsec@fgmain}{named}{DarkGreen}
+%\definecolor{picsec@fgmain}{cmyk}{0.85,0.00,0.33,0.50}
 
 % Options
 \picsecoptions{headline=none,frametitle=picture-edu,titlepage=picture,imagename=images/section_figure_1,titleimagename=images/title_figure}
@@ -53,17 +52,22 @@ This is the \texttt{picsec} theme!
 
 Some useful information:
 \begin{itemize}
+
 \item It was created by Eduardo Garc\'ia-Portugu\'es modifying the \texttt{progressbar} package of Sylvain Bouveret: \textcolor{blue}{\url{http://recherche.noiraudes.net/en/LaTeX.php}}.
+
 \item Feel free to use improve it!
-\item Feedback and bug reports are greatly appreciated.
+
 \item If you find it useful, you may want to cite it and share with your colleagues as:
-\begin{thebibliography}{2}
+
+\begin{thebibliography}{1}
 \setbeamertemplate{bibliography item}[online]
 \bibitem{}
 Garc\'ia-Portugu\'es, E. (2015).
 \newblock \texttt{picsec} beamer theme. 
 \newblock \url{https://github.com/edugp/picsec}
 \end{thebibliography}
+
+\item Feedback and bug reports are greatly appreciated!
 
 \end{itemize}
 
@@ -72,18 +76,27 @@ Garc\'ia-Portugu\'es, E. (2015).
 % You can change the picture of each section slide (for example at the beginning of a new section)
 \picsecoptions{headline=none,frametitle=picture-edu,titlepage=picture,imagename=images/section_figure_2,titleimagename=images/title_figure}
 
-\begin{frame}{Disclaimer}
+\definecolor{picsec@fgmain}{cmyk}{0.85,0,0.33,0.5}
+
+\begin{frame}[fragile]
 
 
+\begin{exampleblock}{Options}
 
-\begin{alertblock}{Alert}
-Use it at your own risk.
+\verb|\picsecoptions{headline,frametitle,titlepage,imagename,titleimagename}|
+
+\begin{itemize}
+\item
+\item
+\end{itemize}
+\end{exampleblock}
+
+
+\begin{alertblock}{Disclaimer}
+Use it at your own risk!
 \end{alertblock}
 
 
-\begin{exampleblock}{Alert}
-	Use it at your own risk.
-\end{exampleblock}
 
 
 \end{frame}

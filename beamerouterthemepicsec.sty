@@ -275,33 +275,4 @@
 
 \setbeamertemplate{title page}[picsec theme]
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Background...
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\defbeamertemplate*{background canvas}{picsec theme}{\pgfuseshading{background shading}}%
-
-\AtBeginDocument{%
-  {
-    \usebeamercolor{section in head/foot}
-    \usebeamercolor{normal text}
-   \pgfdeclareverticalshading{background shading}{\the\paperwidth}{color(0cm)=(section in head/foot.bg); color(3cm)=(bg); color(0.6\paperheight)=(bg); color(0.9\paperheight)=(section in head/foot.bg); color(\paperheight)=(black!60!section in head/foot.bg)
-   }
-  }
-}
-
-\mode<handout>
-\setbeamertemplate{background canvas}{}%
-\setbeamertemplate{footline}{
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0.6cm,dp=0ex]{structure.fg}%
-    \quad \insertshorttitle \hfill \insertframenumber~/~\insertintermediateframenumber\quad \ \vskip0.1cm
-  \end{beamercolorbox}%
-}
-
-\mode
-<all>
-
 \makeatother

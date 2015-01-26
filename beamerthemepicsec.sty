@@ -23,8 +23,8 @@
 
 \AtBeginDocument{%
   \typeout{..................................................................}
-  \typeout{You are using the picsec beamer theme (Sylvain B.) and modified by Eduardo García-Portugués}
-  \typeout{Version: 0.42 September 2010. Modified: January 2015.}
+  \typeout{You are using the picsec beamer theme v0.10, created by Eduardo García-Portugués}
+  \typeout{from the code of the progressbar theme (Sylvain B.), v0.42.}
   \typeout{..................................................................}
 }
 
@@ -32,14 +32,11 @@
 
 \renewcommand{\appendix}[1][0void0]
 {
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-  % This piece of code is supposed to introduce a bias in the
-  % number of slides
+  % This piece of code is supposed to introduce a bias in the number of slides
   \makeatletter
   \immediate\write\@auxout{\string\@writefile{nav}%
     {\noexpand\headcommand{\noexpand\def\noexpand\insertintermediateframenumber{\the\c@framenumber}}}}
   \renewcommand{\insertintermediateframenumber}{\inserttotalframenumber}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   
   \def\tmparg{#1}
   \def\tmpargref{0void0}
@@ -69,10 +66,8 @@
   \makeatother
 }
 
-
 % Triangles for itemizes
 \setbeamertemplate{itemize items}[triangle]
-
 
 % Title
 \newcommand{\picturetitle}[3]{%
