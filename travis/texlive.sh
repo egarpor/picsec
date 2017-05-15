@@ -77,6 +77,7 @@ tlmgr install   \
   etoolbox      \
   fandol        \
   filehook      \
+  geometry      \
   ifxetex       \
   lm-math       \
   lualatex-math \
