@@ -1,10 +1,8 @@
-install:
- - source ./travis/texlive.sh
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
 
-cache:
-  directories:
-    - /tmp/texlive
-    - $HOME/.texlive
 
 script:
     - mkdir _build
