@@ -5,7 +5,8 @@ warnings_are_errors: false
 before_install:
 #    - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
 #    - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latex-beamer latex-at­begshi latex-etool­box latex-hy­per­ref latex-if­pdf latex-pgf latex-calc latex-xspace latex-ifthen latex-bibunits latex-xcolor latex-tikz latex-geometry
-    - tlmgr install beamer calc xspace ifthen bibunits xcolor tikz geometry
+    - tlmgr update --self
+    - tlmgr install beamer tools bibunits xcolor geometry
 install: echo Installation step #do not remove this line!
 script:
     - mkdir build
