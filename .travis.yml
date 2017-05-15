@@ -9,5 +9,5 @@ before_install:
     - tlmgr install beamer tools bibunits xcolor geometry
 install: echo Installation step # Do not remove this line!
 script:
-    - mkdir build
-    - pdflatex -interaction=nonstopmode -halt-on-error -output-directory build /tex/template.tex
+    - mkdir tex/build
+    - pdflatex -interaction=nonstopmode -halt-on-error -output-directory tex/build tex/template.tex
