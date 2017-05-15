@@ -2,7 +2,7 @@
 \documentclass[xcolor={svgnames,dvipsnames}]{beamer}
 
 %------------------------------------------------------------------------%
-%--------------------------    picsec theme    --------------------------%
+%-----------------------   theme customizations   -----------------------%
 %------------------------------------------------------------------------%
 
 % Theme
@@ -14,11 +14,16 @@
 %\definecolor{picsec@fgmain}{cmyk}{0.85,0.00,0.33,0.50}
 
 % Options
-\picsecoptions{headline=none,frametitle=picture-section,titlepage=picture,imagename=images/section_figure_1,titleimagename=images/title_figure}
-
+\picsecoptions{
+headline=none,
+frametitle=picture-section,
+titlepage=picture,
+imagename=images/section_figure_1,
+titleimagename=images/title_figure
+}
 
 %------------------------------------------------------------------------%
-%------------------------------ Cover slide -----------------------------%
+%----------------------------   Cover slide   ---------------------------%
 %------------------------------------------------------------------------%
 
 % Create title \picturetitle{long title}{short title}{author}
@@ -54,22 +59,12 @@ University of Copenhagen\\
 
 \item Feel free to improve it!
 
-\item If you find it useful, you may want to cite it and share with your colleagues as:
-
-\begin{thebibliography}{1}
-\setbeamertemplate{bibliography item}[online]
-\bibitem{}
-Garc\'ia-Portugu\'es, E. (2015).
-\newblock \texttt{picsec} beamer theme. 
-\newblock \url{https://github.com/edugp/picsec}
-\end{thebibliography}
-
 \item Feedback and bug reports are greatly appreciated.
 
 \end{itemize}
 
 \end{frame}
-%
+
 %% You can change the picture of each section slide (for example at the beginning of a new section)
 %\picsecoptions{headline=none,frametitle=picture-section,titlepage=picture,imagename=images/section_figure_2,titleimagename=images/title_figure}
 %
