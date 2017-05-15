@@ -1,10 +1,16 @@
-install:
- - source ./texlive.sh
-
-cache:
-  directories:
-    - /tmp/texlive
-    - $HOME/.texlive
-
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
 script:
- - texlua build.lua check -q -H
+- mkdir _build
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build template.tex
+deploy:
+  provider: releases
+  api_key:
+    secure: AAAAB3NzaC1yc2EAAAADAQABAAACAQDGXlxDCKZUEsJ80c/k/Z0II7p7WWOM1iHJdAwKC2PF/CRJAUa7mcMEd5bl9xf8PpL+8xVdvwmy1d9QA1p/b/5zusAD4yoCr0nQf7cnB2BsEYdSRYXBALnzM/SuG1g4ZHmOjy1w7rKu1ygI8VHjjj/1HEBrLMyu4KFadEDnzvVzcN7oPX/EqAJldAuj9itQ9XUib4mKyDa65OY7IupE9oy9Gbp/WTysiVYhehamHAnUctbJHQgB7dP8e8JStqkZPaZ6bIgVdnpy557oMu8pj9U+a3TW/CeAvYX12hFg/4ungEbhwBZAb4KiiVF/Cbgcyg6FZ8hrxifkDbwQrnVkNlYRllf1tzUNZhfqWTTLjMHnGUS9THVZj4lYxZX7hh71ufrZQYfz4VkwXOz7YWxRtkFRv6jDqE2JwyI1ZREpgng1FP+a9r+JvvrXkByOurp3wGNRpJX7/ZiDtfmDMDp2A4/X/WmS0OsJyo53Q3tN64aUOx6dwO9uaZXnO/NsT1qEu/KxkrWmS/LxvNhSgCaW0f1CfweBOx3Ey48FdO3oxUp3skZt7QDoKG/ssgVydLq23/5C5tGgb0MnVQ4jb5nQSeX8Jylqxs9Rw1HQfeMWtyuSgD3dHFk71WWs3x4Gy5KGl8o1zVDepaoUaXNgP039AxsUfkqO4hSsNm3YWocnB8e5tw==
+  file:
+  - _build/template.pdf
+  skip_cleanup: true
+  on:
+    tags: true
