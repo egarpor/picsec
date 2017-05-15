@@ -67,6 +67,8 @@ tlmgr install   \
   adobemapping  \
   amsfonts      \
   amsmath       \
+  beamer        \
+  bibunits      \
   chemgreek     \
   cjkpunct      \
   ctablestack   \
